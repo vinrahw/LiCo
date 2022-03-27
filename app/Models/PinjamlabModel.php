@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+
+use CodeIgniter\Model;
+
+class PinjamlabModel extends Model
+{
+    protected $table = 'pinjamlab';
+    protected $primarykey = 'id';
+
+    protected $useTimestamps = true;
+    protected $allowedFields = ['nama', 'nim', 'tanggal_peminjaman', 'tanggal_pengembalian', 'nama_lab', 'keperluan'];
+
+    public function getPinjamlab($id = false)
+    {
+        if ($id === false) {
+            return $this->findAll();
+        } else {
+            return $this->getWhere(['id' => $id]);
+        }
+    }
+}
